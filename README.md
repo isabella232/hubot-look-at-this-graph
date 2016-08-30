@@ -3,7 +3,7 @@
 Obnoxious fork of https://travis-ci.org/rick/hubot-graphme
 
 Renders images like this:
-[example](http://i.imgur.com/GaatEim.png)
+![](http://i.imgur.com/GaatEim.png)
 
 See upstream meme for more information:
 https://www.youtube.com/watch?v=sIlNIVXpIns
