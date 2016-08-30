@@ -1,7 +1,11 @@
 # Graphite graphs for Hubot (meme version)
 
-[![npm version](https://badge.fury.io/js/hubot-graphme.svg)](http://badge.fury.io/js/hubot-graphme) [![Build Status](https://travis-ci.org/rick/hubot-graphme.png)](https://travis-ci.org/rick/hubot-graphme)
+Obnoxious fork of https://travis-ci.org/rick/hubot-graphme
 
+Renders images like this:
+[example](http://i.imgur.com/GaatEim.png)
+
+See upstream meme for more information:
 https://www.youtube.com/watch?v=sIlNIVXpIns
 
 ## Installation
