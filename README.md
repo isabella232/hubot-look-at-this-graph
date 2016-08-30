@@ -1,20 +1,20 @@
-# Graphite graphs for Hubot
+# Graphite graphs for Hubot (meme version)
 
 [![npm version](https://badge.fury.io/js/hubot-graphme.svg)](http://badge.fury.io/js/hubot-graphme) [![Build Status](https://travis-ci.org/rick/hubot-graphme.png)](https://travis-ci.org/rick/hubot-graphme)
 
-Query Graphite graphs.
+https://www.youtube.com/watch?v=sIlNIVXpIns
 
 ## Installation
 
 In your hubot project repo, run:
 
-`npm install hubot-graphme --save`
+`npm install hubot-look-at-this-graph --save`
 
-Then add **hubot-graphme** to your `external-scripts.json`:
+Then add **hubot-look-at-this-graph** to your `external-scripts.json`:
 
 ```json
 [
-  "hubot-graphme"
+  "hubot-look-at-this-graph"
 ]
 ```
 
@@ -42,16 +42,16 @@ export HUBOT_GRAPHITE_S3_REGION=us-standard
 ## Sample Interaction
 
 ```
-user1>> hubot graph me -1day vmpooler.usage.avg
+user1>> hubot look at this graph -1day vmpooler.usage.avg
 hubot>> http://graphite.example.com/render?target=vmpooler.usage.avg&from=-1day&format=png
 ```
 
 ## All Commands
 
- - `hubot graph me vmpooler.running.*` - show a graph for a graphite query using a target
- - `hubot graph me -1h vmpooler.running.*` - show a graphite graph with a target and a from time
- - `hubot graph me -6h..-1h vmpooler.running.*` - show a graphite graph with a target and a time range
- - `hubot graph me -6h..-1h foo.bar.baz + summarize(bar.baz.foo,"1day")` - show a graphite graph with multiple targets
+ - `hubot look at this graph vmpooler.running.*` - show a graph for a graphite query using a target
+ - `hubot look at this graph -1h vmpooler.running.*` - show a graphite graph with a target and a from time
+ - `hubot look at this graph -6h..-1h vmpooler.running.*` - show a graphite graph with a target and a time range
+ - `hubot look at this graph -6h..-1h foo.bar.baz + summarize(bar.baz.foo,"1day")` - show a graphite graph with multiple targets
 
 
 ## Running tests
