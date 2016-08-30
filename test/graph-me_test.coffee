@@ -10,9 +10,9 @@ pkgVersion = pkg.version
 
 room   = null
 url    = null
-helper = new Helper(Path.join(__dirname, "..", "src", "graph-me.coffee"))
+helper = new Helper(Path.join(__dirname, "..", "src", "look-at-this-graph.coffee"))
 
-describe "graph-me", () ->
+describe "look-at-this-graph", () ->
 
   # say something to Hubot
   hubot = (message) ->
