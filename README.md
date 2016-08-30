@@ -1,6 +1,6 @@
 # Graphite graphs for Hubot (meme version)
 
-Obnoxious fork of https://travis-ci.org/rick/hubot-graphme
+Obnoxious fork of https://github.com/rick/hubot-graphme
 
 Renders images like this:
 ![](http://i.imgur.com/GaatEim.png)
