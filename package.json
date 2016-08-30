@@ -1,8 +1,8 @@
 {
-  "name": "hubot-graphme",
-  "description": "Add /graph me support for graphite to hubot",
-  "version": "0.2.0",
-  "author": "Rick Bradley <rick@rickbradley.com>",
+  "name": "hubot-look-at-this-graph",
+  "description": "Meme-related fork of Hubot graph-me script",
+  "version": "0.1.0",
+  "author": "Ben <ben at megatron dot org>",
   "license": "MIT",
 
   "keywords": [
@@ -18,17 +18,18 @@
 
   "repository": {
     "type": "git",
-    "url": "git://github.com/rick/hubot-graphme.git"
+    "url": "git://github.com/benwtr/hubot-look-at-this-graph.git"
   },
 
   "bugs": {
-    "url": "https://github.com/rick/hubot-graphme/issues"
+    "url": "https://github.com/benwtr/hubot-look-at-this-graph/issues"
   },
 
   "dependencies": {
     "coffee-script": "~1.6.3",
     "knox": "~0",
-    "request": "~2"
+    "request": "~2",
+    "lwip": "~0.0.9"
   },
 
   "devDependencies": {

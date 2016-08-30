@@ -13,17 +13,16 @@
 #   HUBOT_GRAPHITE_S3_IMAGE_PATH        - Subdirectory in which to store S3 snapshots (default: "hubot-graphme")
 #
 # Commands:
-#   hubot graph me vmpooler.running.*                                    - show a graph for a graphite query using a target
-#   hubot graph me -1h vmpooler.running.*                                - show a graphite graph with a target and a from time
-#   hubot graph me -6h..-1h vmpooler.running.*                           - show a graphite graph with a target and a time range
-#   hubot graph me -6h..-1h foo.bar.baz + summarize(bar.baz.foo,"1day")  - show a graphite graph with multiple targets
+#   hubot look at this graph vmpooler.running.*                                    - show a graph for a graphite query using a target
+#   hubot look at this graph -1h vmpooler.running.*                                - show a graphite graph with a target and a from time
+#   hubot look at this graph -6h..-1h vmpooler.running.*                           - show a graphite graph with a target and a time range
+#   hubot look at this graph -6h..-1h foo.bar.baz + summarize(bar.baz.foo,"1day")  - show a graphite graph with multiple targets
 #
-# Author:
-#   Rick Bradley (rick@rickbradley.com, github.com/rick)
 
 crypto  = require "crypto"
 knox    = require "knox"
 request = require "request"
+lwip    = require "lwip"
 
 module.exports = (robot) ->
 
@@ -92,7 +91,16 @@ module.exports = (robot) ->
     msg.reply url
     request url, { encoding: null }, (err, response, body) ->
       if typeof body isnt "undefined" # hacky
-        uploadToS3(msg, body, body.length, response.headers["content-type"])
+        g_image = null
+        lwip.open body, 'png', (err, image) ->
+          image.resize 555, 355, 'lanczos', (err, image) ->
+            image.rotate -12.5, [0,0,0,0], (err, image) ->
+              g_image = image
+        lwip.open "#{__dirname}/nickelback.jpg", (err, image) ->
+          image.batch()
+            .paste 902, 400, g_image
+            .toBuffer 'png', {}, (err, outbuf) ->
+              uploadToS3(msg, outbuf, outbuf.length, response.headers["content-type"])
       else
         msg.reply "Graphite request error: #{err}, response: #{response}"
 
@@ -134,7 +142,7 @@ module.exports = (robot) ->
   timePattern = "(?:[-_:\/+a-zA-Z0-9]+)"
 
   robot.respond ///
-    graph(?:\s+me)?                       # graph me
+    look\ at\ this\ graph
 
     (?:                                   # optional time range
       (?:\s+
@@ -165,6 +173,6 @@ module.exports = (robot) ->
       if query = buildQuery(from, through, targets)
         fetchAndUpload(msg, "#{url}/render?#{query.join("&")}")
       else
-        msg.reply "Type: `help graph` for usage info"
+        msg.reply "Type: `help look at this graph` for usage info"
     else
       msg.send "Configuration variables are not set: #{notConfigured().join(", ")}."
