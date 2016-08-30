@@ -171,7 +171,7 @@ module.exports = (robot) ->
       targets = msg.match[3]
 
       if query = buildQuery(from, through, targets)
-        fetchAndUpload(msg, "#{url}/render?#{query.join("&")}")
+        fetchAndUpload(msg, "#{url}/render?#{query.join("&")}&width=586&height=308")
       else
         msg.reply "Type: `help look at this graph` for usage info"
     else
